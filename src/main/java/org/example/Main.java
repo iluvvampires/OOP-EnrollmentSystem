@@ -30,7 +30,7 @@ public class Main {
         System.out.print("\n" + "Enter Course ID: ");
         String courseID = scanner.nextLine();
 
-        System.out.print("\n" + "Enter Course Name: ");
+        System.out.print("Enter Course Name: ");
         String courseName = scanner.nextLine();
 
         System.out.print("Enter Course Program: ");
@@ -42,6 +42,7 @@ public class Main {
 
         System.out.println("\n" + "Course ID: " + c.getCourseID());
         System.out.println("Course Name: " + c.getcourseName());
-        System.out.println("Course Program: " + c.getcourseProgram());;
+        System.out.println("Course Program: " + c.getcourseProgram());
+        ;
     }
 }
