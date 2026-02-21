@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.model.Course;
+import org.example.model.Student;
+
 import java.util.Scanner;
 
 public class Main {
@@ -43,6 +46,6 @@ public class Main {
         System.out.println("\n" + "Course ID: " + c.getCourseID());
         System.out.println("Course Name: " + c.getcourseName());
         System.out.println("Course Program: " + c.getcourseProgram());
-        ;
+
     }
 }
