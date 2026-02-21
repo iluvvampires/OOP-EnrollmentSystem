@@ -1,51 +1,74 @@
 package org.example;
 
-import org.example.model.Course;
 import org.example.model.Student;
-
+import org.example.model.Course;
+import org.example.service.StudentRegistration;
+import org.example.service.CourseRegistration;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        StudentRegistration studentService = new StudentRegistration();
+        CourseRegistration courseService = new CourseRegistration();
 
-        Student s = new Student();
+        while (true) {
+            System.out.println("[1] Save Student");
+            System.out.println("[2] Display Student");
+            System.out.println("[3] Update Student");
+            System.out.println("[4] Remove Student");
+            System.out.println("[5] Exit");
 
-        System.out.print("Enter Student ID: ");
-        String ID = scanner.nextLine();
+            System.out.print("\nSelect Category: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
-        System.out.print("Enter Student Name: ");
-        String name = scanner.nextLine();
+            if (choice == 5) break;
 
-        System.out.print("Enter Student Program: ");
-        String program = scanner.nextLine();
+            switch (choice) {
+                case 1:
 
-        s.setID(ID);
-        s.setName(name);
-        s.setProgram(program);
+                    System.out.print("\nEnter Student ID: ");
+                    String sId = scanner.nextLine();
+                    System.out.print("Enter Student Name: ");
+                    String sName = scanner.nextLine();
+                    System.out.print("Enter Program: ");
+                    String sProg = scanner.nextLine();
+                    studentService.saveStudent(new Student(sId, sName, sProg));
 
-        System.out.println("\n" + "Student ID: " + s.getID());
-        System.out.println("Student Name: " + s.getName());
-        System.out.println("Student Program: " + s.getProgram());
 
-        Course c = new Course();
+                    System.out.print("\nEnter Course ID: ");
+                    String cId = scanner.nextLine();
+                    System.out.print("Enter Course Name: ");
+                    String cName = scanner.nextLine();
+                    System.out.print("Program: ");
+                    String cProg = scanner.nextLine();
+                    courseService.save(new Course(cId, cName, cProg));
+                    break;
 
-        System.out.print("\n" + "Enter Course ID: ");
-        String courseID = scanner.nextLine();
+                case 2:
+                    System.out.println("\n--- Student Records ---");
+                    studentService.displayAllStudent();
+                    System.out.println("--- Course Records ---");
+                    courseService.displayAll();
+                    break;
 
-        System.out.print("Enter Course Name: ");
-        String courseName = scanner.nextLine();
+                case 3:
+                    System.out.print("Enter Student ID to Update: ");
+                    String upId = scanner.nextLine();
+                    System.out.print("New Name: ");
+                    String upName = scanner.nextLine();
+                    System.out.print("New Program: ");
+                    String upProg = scanner.nextLine();
+                    studentService.updateStudent(upId, upName, upProg);
+                    break;
 
-        System.out.print("Enter Course Program: ");
-        String courseProgram = scanner.nextLine();
-
-        c.setCourseID(courseID);
-        c.setcourseName(courseName);
-        c.setcourseProgram(courseProgram);
-
-        System.out.println("\n" + "Course ID: " + c.getCourseID());
-        System.out.println("Course Name: " + c.getcourseName());
-        System.out.println("Course Program: " + c.getcourseProgram());
-
+                case 4:
+                    System.out.print("Enter Student ID to Remove: ");
+                    String remId = scanner.nextLine();
+                    studentService.removeStudent(remId);
+                    break;
+            }
+        }
     }
 }
