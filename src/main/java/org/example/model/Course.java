@@ -3,39 +3,28 @@ package org.example.model;
 public class Course {
     private String courseID;
     private String courseName;
-    private String courseProgram;
+    private String program;
 
-    public Course(){
-    }
-    public Course(String courseID) {
+    public Course() {}
 
-    }
-
-    public Course(String courseID, String name, String program) {
+    public Course(String courseID, String courseName, String program) {
         this.courseID = courseID;
-        this.name = name;
+        this.courseName = courseName;
         this.program = program;
     }
 
-    public void setCourseID(String courseID){
-        this.courseID = courseID;
-    }
+    
+    public String getcourseID() { return courseID; }
+    public void setCourseID(String courseID) { this.courseID = courseID; }
 
-    public int getCourseID() {
-        return this.courseID;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getcourseName() { return courseName; }
+    public void setCourseName(String courseName) { this.courseName = courseName; }
 
-    public int getProgram() {
-        return program;
-    }
-    public void setProgram(String program) {
-        this.program = program;
+    public String getProgram() { return program; }
+    public void setProgram(String program) { this.program = program; }
 
+    @Override
+    public String toString() {
+        return "Course ID: " + courseID + "\nCourse Name: " + courseName + "\nProgram: " + program + "\n";
     }
 }

@@ -1,49 +1,31 @@
 package org.example.service;
+
 import org.example.model.Course;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CourseRegistration {
-    private ArrayList<Course> courseArrayList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private ArrayList<Course> courseList = new ArrayList<>();
 
-    //All service or server layers are all in this, this includes the CRUD.
-
-    //Create
-    public void addCourse(Course course){
-        courseArrayList.add(course);
+    public void save(Course course) {
+        courseList.add(course);
     }
 
-    //Read
     public void displayAll() {
-        System.out.println(courseArrayList);
+        for (Course c : courseList) {
+            System.out.println(c);
+        }
     }
 
-    //Update
-    public void  updateCourse(Course course){
-        for (int i = 0; i < courseArrayList.size(); i++) {
-            if(courseArrayList.get(i).getCourseID() == (course.getCourseID())){
-                System.out.print("Enter name: ");
-                String name = scanner.nextLine();
-
-                System.out.print("Enter program: ");
-                int program = scanner.nextInt();
-
-                courseArrayList.set(i, new Course(course.getCourseID(), name, program));
-                break;
+    public void updateCourse(String id, String newName, String newProgram) {
+        for (Course c : courseList) {
+            if (c.getcourseID().equals(id)) {
+                c.setCourseName(newName);
+                c.setProgram(newProgram);
             }
         }
     }
 
-    //Remove
-    public String delete(Course course){
-        for(int i = 0; i < courseArrayList.size(); i++){
-            if(courseArrayList.get(i).getCourseID() == (course.getCourseID())){
-                courseArrayList.remove(i);
-                return "Successfully Deleted!";
-            }
-        }
-
-        return "No such person";
+    public void removeCourse(String id) {
+        courseList.removeIf(c -> c.getcourseID().equals(id));
     }
 }
