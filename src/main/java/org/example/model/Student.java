@@ -1,30 +1,23 @@
 package org.example.model;
 
-public class Student {
-    private String studentID;
-    private String studentName;
+public class Student extends Person {
     private String program;
 
-    public Student() {}
-
-    public Student(String studentID, String studentName, String program) {
-        this.studentID = studentID;
-        this.studentName = studentName;
-        this.program = program;
+    public Student() {
+        super();
     }
 
-
-    public String getStudentID() { return studentID; }
-    public void setStudentID(String studentID) { this.studentID = studentID; }
-
-    public String getStudentName() { return studentName; }
-    public void setStudentName(String studentName) { this.studentName = studentName; }
+    public Student(int id, String name, String program) {
+        super(id, name); // Passes ID and Name to the Person class constructor
+        this.program = program;
+    }
 
     public String getProgram() { return program; }
     public void setProgram(String program) { this.program = program; }
 
     @Override
     public String toString() {
-        return "Student ID: " + studentID + "\nStudent Name: " + studentName + "\nProgram: " + program + "\n";
+        // We can access getName() because it's inherited from Person
+        return "ID: " + getId() + "\nName: " + getName() + "\nProgram: " + program + "\n";
     }
 }

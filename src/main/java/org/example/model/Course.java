@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class Course {
+public class Course extends Person {
     private String courseID;
     private String courseName;
     private String program;
