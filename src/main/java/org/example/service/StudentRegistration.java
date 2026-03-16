@@ -45,4 +45,12 @@ public class StudentRegistration {
         }
         System.out.println("Remove failed: Student not found.");
     }
+    public Student findStudentById(int id) {
+        for (Student s : studentList) {
+            if (s.getId() == id) {
+                return s;
+            }
+        }
+        return null; // Returns null if no student matches the ID
+    }
 }
