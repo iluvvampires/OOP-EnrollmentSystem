@@ -1,24 +1,28 @@
 package org.example.model;
 
-public class Person {
-    private int id;
+public abstract class Person { // <<abstract>>
+    private String id;
     private String name;
 
     public Person() {}
 
-    public Person(int id, String name) {
+    public Person(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    public abstract void mainTask();
 
-    public int getId() {
+    public String getId() {
+
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
+
         this.id = id;
     }
     public String getName() {
+
         return name;
     }
     public void setName(String name) {

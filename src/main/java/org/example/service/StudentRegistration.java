@@ -16,33 +16,37 @@ public class StudentRegistration {
             return;
         }
         for (Student s : studentList) {
-            System.out.println(s.toString());
+            System.out.println("ID: " + s.getId() + " | Name: " + s.getName() + " | Program: " + s.getProgram());
+            s.mainTask();
         }
     }
 
-
-    public void updateStudent(int id, String newName, String newProgram) {
+    public Student findStudentById(String id) {
         for (Student s : studentList) {
+            if (s.getId().equalsIgnoreCase(id)) {
+                return s;
+            }
+        }
+        return null;
+    }
 
-            if (s.getId() == id) {
+    public void removeStudent(String id) {
+        boolean removed = studentList.removeIf(s -> s.getId().equalsIgnoreCase(id));
+        if (removed) {
+            System.out.println("Student " + id + " removed.");
+        } else {
+            System.out.println("Student not found.");
+        }
+    }
+    public void updateStudent(String id, String newName, String newProgram) {
+        for (Student s : studentList) {
+            if (s.getId().equalsIgnoreCase(id)) {
                 s.setName(newName);
                 s.setProgram(newProgram);
-                System.out.println("Update successful!");
+                System.out.println("Update successful for Student ID: " + id);
                 return;
             }
         }
-        System.out.println("Student with ID " + id + " not found.");
-    }
-
-
-    public void removeStudent(int id) {
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getId() == id) {
-                studentList.remove(i);
-                System.out.println("Student with ID " + id + " removed.");
-                return;
-            }
-        }
-        System.out.println("Remove failed: Student not found.");
+        System.out.println("Update failed: Student with ID " + id + " not found.");
     }
 }
